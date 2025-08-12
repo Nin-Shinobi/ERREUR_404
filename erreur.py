@@ -17,7 +17,7 @@ class Config:
     BRIGHT_GREEN = (0, 255, 100)
     CYAN = (0, 255, 255)
     WHITE = (255, 255, 255)
-    
+
     # Polices
     MAIN_FONT_SIZE = 200
     MATRIX_FONT_SIZE = 18
@@ -199,7 +199,7 @@ class GlitchText:
         
         # Sélection de la meilleure police disponible
         self.font = self._get_best_font()
-        print(f"Police utilisée pour ERREUR 404: {self.font.get_name() if hasattr(self.font, 'get_name') else 'Police système'}")
+        print(f"Police utilisée: {self.font.get_name() if hasattr(self.font, 'get_name') else 'Police système'}")
         
         # Cache des surfaces de texte
         self.text_cache = {}
