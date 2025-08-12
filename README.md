@@ -233,7 +233,7 @@ python --version
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ```
-MIT License - Copyright (c) 2024 Nin-Shinobi
+MIT License - Copyright (c) 2025 Nin-Shinobi
 ```
 
 ## 🤝 Contribution
