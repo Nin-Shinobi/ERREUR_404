@@ -59,7 +59,11 @@ ERREUR 404 est une application Python qui recrée l'ambiance iconique de Matrix 
 - **Pygame 2.0** ou supérieur
 - **Windows/Linux/macOS** compatible
 
-### Installation rapide
+### INSTALLATION
+
+## Windows
+
+### Installation rapide 
 
 1. **Clonez le repository**
 ```bash
@@ -77,10 +81,39 @@ pip install pygame
 python erreur.py
 ```
 
+## Linux 
+
+1. **Clonez le repository**
+```bash
+git clone https://github.com/Nin-Shinobi/ERREUR_404.git
+cd ERREUR_404
+```
+
+2. **Créez un environnement virtuel**
+```bash
+python3 -m venv .venv
+```
+&
+
+```bash
+source .venv/bin/activate
+```
+
+3. **Installez les dépendances**
+```bash
+pip install pygame
+```
+
+4. **Lancez l'application**
+```bash
+python erreur.py
+```
+
 ### Installation alternative avec requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
+
 
 ## 🎮 Utilisation
 
