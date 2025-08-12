@@ -9,6 +9,12 @@
 
 ![ERREUR 404 Matrix Mode](https://img.shields.io/badge/Status-Online-brightgreen)
 
+## 🖼️ Aperçu
+
+![ERREUR 404 Matrix Mode](images/screenshot.png)
+
+*Capture d'écran de l'application en action - Effets Matrix avec police Consolas style hacker*
+
 ## 🎯 Description
 
 ERREUR 404 est une application Python qui recrée l'ambiance iconique de Matrix avec des effets visuels avancés. L'application affiche un message "ERREUR 404" stylisé au centre de l'écran, entouré d'une pluie de caractères Matrix qui défilent avec des effets de traînée, de lueur et de scintillement.
