@@ -1,10 +1,15 @@
-import pygame
 import sys
+import os
 import time
 import random
 import math
 from typing import List, Tuple, Optional
 from dataclasses import dataclass
+
+# Bloque les messages d'accueil de pygame
+import contextlib
+with contextlib.redirect_stdout(open(os.devnull, "w")), contextlib.redirect_stderr(open(os.devnull, "w")):
+    import pygame
 
 # Configuration
 @dataclass
@@ -19,7 +24,7 @@ class Config:
     WHITE = (255, 255, 255)
 
     # Polices
-    MAIN_FONT_SIZE = 200
+    MAIN_FONT_SIZE = 230
     MATRIX_FONT_SIZE = 18
     FONT_NAME = "Consolas"
     # Polices de style HACKER (essayer dans l'ordre)
@@ -199,7 +204,7 @@ class GlitchText:
         
         # Sélection de la meilleure police disponible
         self.font = self._get_best_font()
-        print(f"Police utilisée: {self.font.get_name() if hasattr(self.font, 'get_name') else 'Police système'}")
+        print(f"\033[96m[INFO]\033[0m Police utilisée pour ERREUR 404 : \033[1;92m{self.font.get_name() if hasattr(self.font, 'get_name') else 'Police système'}\033[0m")
         
         # Cache des surfaces de texte
         self.text_cache = {}
@@ -388,11 +393,10 @@ class Error404App:
                 
                 # Contrôle du framerate pour éviter une utilisation excessive du CPU
                 pygame.time.Clock().tick(60)
-        
         except KeyboardInterrupt:
-            print("Arrêt demandé par l'utilisateur")
+            print("\033[1;91m[EXIT]\033[0m Arrêt demandé par l'utilisateur")
         except Exception as e:
-            print(f"Erreur inattendue: {e}")
+            print(f"\033[1;91m[ERREUR]\033[0m Erreur inattendue : \033[1;93m{e}\033[0m")
         finally:
             self.cleanup()
     
@@ -401,13 +405,38 @@ class Error404App:
         pygame.quit()
         sys.exit()
 
+def print_ascii_green():
+    ascii_art = r"""
+  ______  _____   _____   ______  _    _  _____    _  _     ___   _  _
+ |  ____||  __ \ |  __ \ |  ____|| |  | ||  __ \  | || |   / _ \ | || |
+ | |__   | |__) || |__) || |__   | |  | || |__) | | || |_ | | | || || |_
+ |  __|  |  _  / |  _  / |  __|  | |  | ||  _  /  |__   _|| | | ||__   _|
+ | |____ | | \ \ | | \ \ | |____ | |__| || | \ \     | |  | |_| |   | |
+ |______||_|  \_\|_|  \_\|______| \____/ |_|  \_\    |_|   \___/    |_|
+"""
+    GREEN = "\033[92m"
+    CYAN = "\033[96m"
+    BOLD = "\033[1m"
+    RESET = "\033[0m"
+    lines = ascii_art.splitlines()
+    max_len = max(len(line) for line in lines)
+    title = "ERREUR 404 - MATRIX MODE"
+    title_pad = (max_len - len(title)) // 2
+    border = f"{CYAN}{BOLD}{'═' * max_len}{RESET}"
+    print(border)
+    print(f"{CYAN}{BOLD}{' ' * title_pad}{title}{' ' * (max_len - len(title) - title_pad)}{RESET}")
+    print(border)
+    for line in lines:
+        print(f"{GREEN}{line.ljust(max_len)}{RESET}")
+    print(border)
+
 def main():
-    """Point d'entrée principal"""
+    print_ascii_green()
     try:
         app = Error404App()
         app.run()
     except Exception as e:
-        print(f"Erreur lors du démarrage: {e}")
+        print(f"\033[1;91m[ERREUR]\033[0m Erreur lors du démarrage : \033[1;93m{e}\033[0m")
         sys.exit(1)
 
 if __name__ == "__main__":
